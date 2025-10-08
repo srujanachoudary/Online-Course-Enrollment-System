@@ -6,9 +6,9 @@ class EnrollmentService:
     def enroll_course(self, student_id, course_id):
         enrollment_id = self.enrollment_dao.enroll_student(student_id, course_id)
         if enrollment_id:
-            print(f"Enrollment successful. Enrollment ID: {enrollment_id}")
+            return f"Enrollment successful. Enrollment ID: {enrollment_id}"
         else:
-            print("Enrollment failed.")
+            return "Enrollment failed."
 
     def drop_course(self, enrollment_id):
         success = self.enrollment_dao.drop_enrollment(enrollment_id)
@@ -23,3 +23,4 @@ class EnrollmentService:
         for e in enrollments:
             # adapt keys to your table columns
             print(f"Enrollment ID: {e.get('enrollment_id')}, Course ID: {e.get('course_id')}, Status: {e.get('status', 'N/A')}")
+
